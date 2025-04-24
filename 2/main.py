@@ -1,3 +1,6 @@
+### RUN WITH ctrl + shift + B
+### DEBUG WITH Python Debugger: Debug using launch.json -> Python: Module Debug
+
 from abc import ABC, abstractmethod
 import enum
 from functools import lru_cache
@@ -357,13 +360,9 @@ def LU_decomp(n: int, A: numpy.ndarray, dU: numpy.ndarray, use_views_for_LU=Fals
 
 		L = ViewTri.with_diag_of_matrix(A, LowerTriBehaviour)
 		U = ViewTri.with_separate_diag(A, dU, UpperTriBehaviour)
-		# L = ViewTriL(A)
-		# U = ViewTriU(A, dU)
 	else:
 		L = MemTri.with_diag_of_matrix_like(A, LowerTriBehaviour)
 		U = MemTri.with_separate_diag_like(A, dU, UpperTriBehaviour)
-		# L = MemTriL(n)
-		# U = MemTriU(n, dU)
 
 	for p in range(0, n):
 		for i in range(0, p + 1):

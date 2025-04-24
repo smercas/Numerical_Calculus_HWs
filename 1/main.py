@@ -1,3 +1,6 @@
+### RUN WITH ctrl + shift + B
+### DEBUG WITH Python Debugger: Debug using launch.json -> Python: Module Debug
+
 from functools import lru_cache
 import math
 import random

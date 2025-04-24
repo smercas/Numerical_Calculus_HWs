@@ -1,3 +1,6 @@
+### RUN WITH ctrl + shift + B
+### DEBUG WITH Python Debugger: Debug using launch.json -> Python: Module Debug
+
 from typing import Callable
 import numpy
 
@@ -114,6 +117,7 @@ if __name__ == "__main__":
 			]:
 				inv, k = inv_type(A, method)
 				if inv is not None:
+					# print(inv)
 					diff = diff_func(inv)
 					print(f"{inv_type}: {norm_1(diff - numpy.eye(diff.shape[0]))}")
 					assert norm_1(diff - numpy.eye(diff.shape[0])) < PRECISION
@@ -122,7 +126,7 @@ if __name__ == "__main__":
 	numpy.set_printoptions(precision=13, suppress=True, linewidth=200)
 	def matrix_for_3rd_exercise(n: int): return numpy.eye(n) + numpy.eye(n, k=1) * 2
 	def inverse_form_for_3rd_exercise(n: int):
-		return sum(numpy.eye(n, k=i) * (2 ** i) * (-1 if i % 2 == 1 else 1) for i in range(n))
+		return sum(numpy.eye(n, k=i) * (-2 ** i) for i in range(n))
 	for method_number, method in enumerate(methods, 1):
 		# print(f"for method {method_number}:")
 		for n in range(2, 10 + 1):
